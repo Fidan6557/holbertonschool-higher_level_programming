@@ -1,3 +1,1 @@
-# Shell Basics
-
-This project contains shell scripts for basic command line usage.
+This is the Python imports project$
