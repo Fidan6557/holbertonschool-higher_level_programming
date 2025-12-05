@@ -10,7 +10,7 @@ def roman_to_int(roman_string):
 
     for i in range(n):
         current = roman_map[roman_string[i]]
-        if i + 1 < n and current < roman_map[roman_string[i + 1]]:
+        if i+1 < n and current < roman_map[roman_string[i+1]]:
             total -= current
         else:
             total += current
