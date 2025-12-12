@@ -69,4 +69,13 @@ Doctest for MyList class
 >>> print(my_list)
 [-1, -4, -2, -3, -5]
 
-
+# Test case #5: Tuple (should raise AttributeError)
+>>> my_list = (1, 2)
+>>> print(my_list)
+(1, 2)
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+    ...
+AttributeError: 'tuple' object has no attribute 'print_sorted'
+>>> print(my_list)
+(1, 2)
