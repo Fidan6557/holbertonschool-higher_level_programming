@@ -1,20 +1,15 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
-"""a class BaseGeometry"""
+"""My module document"""
 
 
-class BaseGeometry:
-    """a class BaseGeometry"""
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+class Rectangle(BaseGeometry):
+    '''
+    My class document
+    '''
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
-    def area(self):
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        if type(value) is not int:
-            raise TypeError("%s must be an integer" % name)
-        if value <= 0:
-            raise ValueError("%s must be greater than 0" % name)
+        BaseGeometry.integer_validator(self, "width", width)
+        BaseGeometry.integer_validator(self, "height", height)
+        self.__width = width
+        self.__height = height
