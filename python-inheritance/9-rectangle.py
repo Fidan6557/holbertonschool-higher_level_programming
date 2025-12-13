@@ -4,6 +4,7 @@ BaseGeometry = __import__('7-base_geometry.py').BaseGeometry()
 
 
 class Rectangle(BaseGeometry):
+    """Instantiation with width and height"""
     def __init__(self, width, height):
         BaseGeometry.integer_validator(self, 'width', width)
         BaseGeometry.integer_validator(self, 'height', height)
