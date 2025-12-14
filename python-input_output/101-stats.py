@@ -27,26 +27,28 @@ def print_stats():
             print("{}: {}".format(code, status_codes[code]))
 
 
-try:
-    for line in sys.stdin:
-        parts = line.split()
+# 🔑 ƏSAS MƏNTİQ BURDADIR
+if __name__ == "__main__":
+    try:
+        for line in sys.stdin:
+            parts = line.split()
 
-        try:
-            status = parts[-2]
-            size = int(parts[-1])
-        except (IndexError, ValueError):
-            continue
+            try:
+                status = parts[-2]
+                size = int(parts[-1])
+            except (IndexError, ValueError):
+                continue
 
-        total_size += size
+            total_size += size
 
-        if status in status_codes:
-            status_codes[status] += 1
+            if status in status_codes:
+                status_codes[status] += 1
 
-        line_count += 1
+            line_count += 1
 
-        if line_count % 10 == 0:
-            print_stats()
+            if line_count % 10 == 0:
+                print_stats()
 
-except KeyboardInterrupt:
-    print_stats()
-    raise
+    except KeyboardInterrupt:
+        print_stats()
+        raise
