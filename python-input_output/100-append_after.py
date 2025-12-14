@@ -4,5 +4,5 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """ A function that inserts a line of text to a file"""
-    with open(filename, "a") as f:
+    with open(filename, "r") as f:
         f.write(new_string)
