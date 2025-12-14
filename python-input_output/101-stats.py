@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""
+Reads standard input and prints log statistics.
+"""
 import sys
+
 
 total_size = 0
 line_count = 0
