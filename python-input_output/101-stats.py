@@ -1,54 +1,41 @@
 #!/usr/bin/python3
-"""
-Reads standard input and prints log statistics.
-"""
+"""Reads stdin line by line and computes metrics"""
+
 import sys
 
 
-total_size = 0
-line_count = 0
-
-status_codes = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-    "500": 0
-}
-
-
-def print_stats():
+def print_stats(total_size, status_counts):
+    """Prints the collected statistics"""
     print("File size: {}".format(total_size))
-    for code in sorted(status_codes.keys()):
-        if status_codes[code] != 0:
-            print("{}: {}".format(code, status_codes[code]))
+    for code in sorted(status_counts):
+        print("{}: {}".format(code, status_counts[code]))
 
 
-# 🔑 ƏSAS MƏNTİQ BURDADIR
 if __name__ == "__main__":
+    total_size = 0
+    status_counts = {}
+    valid_codes = {"200", "301", "400", "401", "403", "404", "405", "500"}
+    line_count = 0
+
     try:
         for line in sys.stdin:
+            line_count += 1
             parts = line.split()
 
             try:
-                status = parts[-2]
-                size = int(parts[-1])
+                total_size += int(parts[-1])
             except (IndexError, ValueError):
-                continue
+                pass
 
-            total_size += size
-
-            if status in status_codes:
-                status_codes[status] += 1
-
-            line_count += 1
-
+            try:
+                status = parts[-2]
+                if status in valid_codes:
+                    status_counts[status] = status_counts.get(status, 0) + 1
+            except IndexError:
+                pass
             if line_count % 10 == 0:
-                print_stats()
-
+                print_stats(total_size, status_counts)
     except KeyboardInterrupt:
-        print_stats()
+        print_stats(total_size, status_counts)
         raise
+    print_stats(total_size, status_counts)
