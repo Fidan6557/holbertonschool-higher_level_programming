@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Inserts new_string after each line containing search_string"""
+
+
 def append_after(filename="", search_string="", new_string=""):
     """Inserts new_string after each line containing search_string"""
     with open(filename, "r") as f:
