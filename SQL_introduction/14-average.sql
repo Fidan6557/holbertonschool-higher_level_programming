@@ -1,4 +1,4 @@
 -- a script that computes the score average of all records in the table second_table 
 -- a script that computes the score average of all records in the table second_table 
-SELECT AVG(*) AS average
-FROM second_table LIMIT = 10;
+SELECT AVG(*) AS 'average'
+FROM second_table;
